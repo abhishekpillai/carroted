@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 #   root 'welcome#index'
-  get '/', to: redirect('http://www.classcarrot.co')
+  root to: redirect("http://www.classcarrot.co")
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get "admin", to: "behaviors#admin"
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   post "behaviors", to: "behaviors#create"
   delete "behaviors", to: "behaviors#delete"
   put "behaviors/admin", to: "behaviors#status_update"
-  
+
   get "groups/:id/students", to: "groups#students", as: "students_for_group"
   get "groups/:id/students_with_behaviors", to: "groups#students_with_behaviors"
   # Example of named route that can be invoked with purchase_url(id: product.id)
